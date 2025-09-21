@@ -20,13 +20,13 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
-@app.get("/")
-def read_root():
-    try:
-        docs=client.fast.fast.find_one({})
-        print(docs["fast"])
-        return {"fast":docs["fast"]}
-    except:
-        print("failed to fetch data")
-        return {"fast": "connected but data cannot be fecthed"}
+# @app.get("/")
+# def read_root():
+#     try:
+#         docs=client.fast.fast.find_one({})
+#         print(docs["fast"])
+#         return {"fast":docs["fast"]}
+#     except:
+#         print("failed to fetch data")
+#         return {"fast": "connected but data cannot be fecthed"}
     

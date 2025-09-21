@@ -4,9 +4,8 @@ def task(item)->dict:
 
     return{
         "id":str(item["_id"]),
-        "title":item["title"],
-        "dec":item["dec"],
-        "priority":item["priority"]
+        "dec":item["fast"],
+        
     }
 
 def taskLists(items)->list:
