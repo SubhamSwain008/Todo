@@ -6,7 +6,8 @@ function App() {
 const [msg,setMessage]=useState("Loading");
 const [msglist,setMessglist]=useState([]);
 const [currentTask,setCurrentTask]=useState("");
-const [idxfordel,setIdxfordel]=useState(-1)
+const [idxfordel,setIdxfordel]=useState(-1);
+const input1=useRef(null);
 
 const getWel=async()=>{
   try{setMessglist([])
@@ -17,7 +18,7 @@ const getWel=async()=>{
        for(let i=0;i<hello.data.fast.length;i++){
         
         setMessglist(m=>[...m,hello.data.fast[i]['dec']])
-        
+        setCurrentTask("")
         // console.log(msglist)
 
        }      
@@ -27,9 +28,11 @@ const getWel=async()=>{
   }
 }
 const addnewTask=async()=>{
+if(currentTask!=""){
  const added=await axios.post('http://127.0.0.1:8000/add', {
       fast: currentTask  
-    });
+    });}
+if(currentTask=="")alert("no blank task please")
 //  console.log(added);
  getWel();
 }
@@ -70,11 +73,13 @@ const addnewTask=async()=>{
   {currentTask}
 </h1>
  <h1>
-        <input type="text" name="" id="" 
+        <input ref={input1} type="text" name="" id="input1" 
         onChange={(e)=>setCurrentTask(e.target.value)}
         ></input>
         <button
-        onClick={()=>{addnewTask()}}
+        onClick={()=>{addnewTask()
+          input1.current.value=""
+        }}
         >Submit</button>
 </h1>
       </div>

@@ -13,6 +13,7 @@ def read_root():
         docs=client.fast.fast.find({})
         # print(taskLists(docs))
         task=taskLists(docs)
+        print(task)
         return {"fast":task}
     except:
         print("failed to fetch data")
