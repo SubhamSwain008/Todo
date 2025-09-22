@@ -7,10 +7,9 @@ app = FastAPI()
 app.include_router(Route)
 
 origins = [
-    "http://localhost:5173",
-    "https://localhost.tiangolo.com",
-    "http://localhost",
-    "http://localhost:8080",
+   
+    "https://todo-ed3t.onrender.com",
+  
 ]
 
 app.add_middleware(

@@ -11,7 +11,7 @@ const input1=useRef(null);
 
 const getWel=async()=>{
   try{setMessglist([])
-       const hello =await axios.get('http://127.0.0.1:8000/');
+       const hello =await axios.get('https://todo-backend-5o0c.onrender.com/');
     
        console.log(hello.data.fast);
        setMessage("")
@@ -29,7 +29,7 @@ const getWel=async()=>{
 }
 const addnewTask=async()=>{
 if(currentTask!=""){
- const added=await axios.post('http://127.0.0.1:8000/add', {
+ const added=await axios.post('https://todo-backend-5o0c.onrender.com/add', {
       fast: currentTask  
     });}
 if(currentTask=="")alert("no blank task please")
@@ -42,7 +42,7 @@ if(currentTask=="")alert("no blank task please")
 
   useEffect(()=>{
     (async()=>{
-      const deleted= await axios.delete('http://127.0.0.1:8000/del', {
+      const deleted= await axios.delete('https://todo-backend-5o0c.onrender.com/del', {
       data:{fast: String(msglist[idxfordel])}
     });
     console.log(deleted);
