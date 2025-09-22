@@ -18,5 +18,13 @@ def read_root():
         print("failed to fetch data")
         return {"fast": "connected but data cannot be fecthed"}
     
-# @Route.post("/")
-# def add_note
+@Route.post("/add")
+def add_task(ctask:Task):
+    inserted_task=str(client.fast.fast.insert_one(dict(ctask)))
+
+    return inserted_task
+
+@Route.delete("/del")
+def del_task(ctask:Task):
+    deleted=client.fast.fast.delete_one(dict(ctask))
+    return deleted.deleted_count
