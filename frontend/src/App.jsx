@@ -49,7 +49,8 @@ const addnewTask=async()=>{
 
   return (
     <>
-    <h1>Task lists :</h1>
+    <div style={{justifyContent:"center",justifyItems:"center"}}>
+    <h1 style={{background:"red",justifySelf:"center"}}>Task lists </h1>
     <h1>{msg}</h1>
     
    <h1>
@@ -68,14 +69,15 @@ const addnewTask=async()=>{
         <h1>Add more task:
   {currentTask}
 </h1>
-
+ <h1>
         <input type="text" name="" id="" 
         onChange={(e)=>setCurrentTask(e.target.value)}
         ></input>
         <button
         onClick={()=>{addnewTask()}}
         >Submit</button>
-
+</h1>
+      </div>
       </div>
     </>
   )
