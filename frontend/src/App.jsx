@@ -1,7 +1,6 @@
 import axios from 'axios';
 import { useState ,useEffect, useRef} from 'react'
 
-
 function App() {
 const [msg,setMessage]=useState("Loading");
 const [msglist,setMessglist]=useState([]);
@@ -19,7 +18,6 @@ const getWel=async()=>{
         
         setMessglist(m=>[...m,hello.data.fast[i]['dec']])
         setCurrentTask("")
-        // console.log(msglist)
 
        }      
   }
@@ -35,7 +33,6 @@ if(currentTask!=""){
       fast: currentTask+`(${time})`
     });}
 if(currentTask=="")alert("no blank task please")
-//  console.log(added);
  getWel();
 }
   useEffect(() => {
@@ -54,40 +51,43 @@ if(currentTask=="")alert("no blank task please")
 
   return (
     <>
-    <div style={{justifyContent:"center",justifyItems:"center"}}>
-    <h1 style={{background:"red",justifySelf:"center"}}>Task lists </h1>
-    <h1>{msg}</h1>
+    <div style={{maxWidth:"600px",margin:"40px auto",padding:"20px 30px",background:"white",borderRadius:"16px",boxShadow:"0 6px 16px rgba(0,0,0,0.15)",fontFamily:"Segoe UI, Tahoma, Geneva, Verdana, sans-serif"}}>
+      <h1 style={{textAlign:"center",color:"#333",marginBottom:"20px"}}>Task Lists</h1>
+      <h2 style={{textAlign:"center",color:"#777"}}>{msg}</h2>
     
-   <h1>
-    <ul>
-      {msglist.map((value,idx)=>(<li key={idx}>{value}
-        <button
-        onClick={()=>{
-          setIdxfordel(idx);
-        }}
-        >X</button>
-      </li>))}
-    </ul>
-      </h1>
+      <ul style={{listStyle:"none",padding:0,margin:"20px 0"}}>
+        {msglist.map((value,idx)=>(
+          <li key={idx} style={{display:"flex",justifyContent:"space-between",alignItems:"center",background:"#f8f8f8",marginBottom:"10px",padding:"12px 16px",borderRadius:"8px",transition:"background 0.2s"}}>
+            <span>{value}</span>
+            <button
+              style={{background:"#ff5c5c",color:"white",border:"none",padding:"6px 12px",borderRadius:"6px",cursor:"pointer"}}
+              onClick={()=>{setIdxfordel(idx);}}
+            >X</button>
+          </li>
+        ))}
+      </ul>
 
-      <div>
-        <h1>Add more task:
-  {currentTask}
-</h1>
- <h1>
-        <input ref={input1} type="text" name="" id="input1" 
-        onChange={(e)=>
-          
-          setCurrentTask(e.target.value)}
-        ></input>
-        <button
-        onClick={()=>{addnewTask()
-          input1.current.value=""
-        }}
-        >Submit</button>
-</h1>
+      <div style={{marginTop:"30px",textAlign:"center"}}>
+        <h2>Add a new task</h2>
+        <div style={{display:"flex",gap:"10px",justifyContent:"center",marginTop:"10px"}}>
+          <input 
+            ref={input1} 
+            type="text" 
+            id="input1"
+            placeholder="Enter task here..."
+            onChange={(e)=> setCurrentTask(e.target.value)}
+            style={{flex:1,padding:"10px 14px",border:"1px solid #ccc",borderRadius:"8px",fontSize:"14px"}}
+          />
+          <button
+            style={{background:"#4CAF50",color:"white",border:"none",padding:"10px 16px",borderRadius:"8px",cursor:"pointer"}}
+            onClick={()=>{
+              addnewTask();
+              input1.current.value=""
+            }}
+          >Submit</button>
+        </div>
       </div>
-      </div>
+    </div>
     </>
   )
 }
