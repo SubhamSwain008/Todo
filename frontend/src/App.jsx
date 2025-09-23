@@ -29,9 +29,10 @@ const getWel=async()=>{
 const addnewTask=async()=>{
   let now = new Date();
 let time = now.toLocaleTimeString();
+let date= now.toLocaleDateString();
 if(currentTask!=""){
  const added=await axios.post('https://todo-backend-5o0c.onrender.com/add', {
-      fast: currentTask+`(${time})`
+      fast:`Date:${date} ` +currentTask+` time:(${time}) `
     });}
 if(currentTask=="")alert("no blank task please");
 setMessglist([]);
