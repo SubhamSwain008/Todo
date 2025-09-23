@@ -42,7 +42,7 @@ setMessglist([]);
      let now = new Date();
 let time = now.toLocaleTimeString();
 let date= now.toLocaleDateString();
-console.log(`Date:${date},currentTask, time:(${time})`)
+console.log(`currentTask, time:(${time}), (${date}),`)
     setMessglist([]);
     getWel();
   }, []);
