@@ -9,11 +9,12 @@ const [idxfordel,setIdxfordel]=useState(-1);
 const input1=useRef(null);
 
 const getWel=async()=>{
-  try{setMessglist([])
+  try{
        const hello =await axios.get('https://todo-backend-5o0c.onrender.com/');
     
        console.log(hello.data.fast);
        setMessage("")
+       setMessglist([]);
        for(let i=0;i<hello.data.fast.length;i++){
         
         setMessglist(m=>[...m,hello.data.fast[i]['dec']])
@@ -32,10 +33,12 @@ if(currentTask!=""){
  const added=await axios.post('https://todo-backend-5o0c.onrender.com/add', {
       fast: currentTask+`(${time})`
     });}
-if(currentTask=="")alert("no blank task please")
+if(currentTask=="")alert("no blank task please");
+setMessglist([]);
  getWel();
 }
   useEffect(() => {
+    setMessglist([]);
     getWel();
   }, []);
 
@@ -45,6 +48,7 @@ if(currentTask=="")alert("no blank task please")
       data:{fast: String(msglist[idxfordel])}
     });
     console.log(deleted);
+    setMessglist([]);
     getWel();
     })()
   },[idxfordel])
