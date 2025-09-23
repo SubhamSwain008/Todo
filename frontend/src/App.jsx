@@ -28,9 +28,11 @@ const getWel=async()=>{
   }
 }
 const addnewTask=async()=>{
+  let now = new Date();
+let time = now.toLocaleTimeString();
 if(currentTask!=""){
  const added=await axios.post('https://todo-backend-5o0c.onrender.com/add', {
-      fast: currentTask  
+      fast: currentTask+`(${time})`
     });}
 if(currentTask=="")alert("no blank task please")
 //  console.log(added);
@@ -74,7 +76,9 @@ if(currentTask=="")alert("no blank task please")
 </h1>
  <h1>
         <input ref={input1} type="text" name="" id="input1" 
-        onChange={(e)=>setCurrentTask(e.target.value)}
+        onChange={(e)=>
+          
+          setCurrentTask(e.target.value)}
         ></input>
         <button
         onClick={()=>{addnewTask()
