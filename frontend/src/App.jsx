@@ -32,17 +32,14 @@ let time = now.toLocaleTimeString();
 let date= now.toLocaleDateString();
 if(currentTask!=""){
  const added=await axios.post('https://todo-backend-5o0c.onrender.com/add', {
-      fast:`Date:${date},${currentTask}, time:(${time})`
+      fast:`${currentTask}, time:(${time}), Date:${date}`
     });}
 if(currentTask=="")alert("no blank task please");
 setMessglist([]);
  getWel();
 }
   useEffect(() => {
-     let now = new Date();
-let time = now.toLocaleTimeString();
-let date= now.toLocaleDateString();
-console.log(`currentTask, time:(${time}), (${date}),`)
+
     setMessglist([]);
     getWel();
   }, []);
